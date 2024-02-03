@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Navbar, Container, Nav, NavDropdown, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../images/logo.png";
+import "../css/NavbarComponent.css";
+import LogOutBtn from "../images/logout.png";
 
 const NavbarComponent = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -23,11 +25,11 @@ const NavbarComponent = () => {
   };
 
   if (isLoggedOut) {
-    return null; // Render nothing if logged out
+    return null;
   }
 
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="navbar-container">
       <Container>
         <Navbar.Brand as={Link} to="/">
           <img src={Logo} alt="Logo" height="30" />
@@ -41,29 +43,31 @@ const NavbarComponent = () => {
               show={dropdownOpen}
               onMouseEnter={handleDropdownToggle}
               onMouseLeave={handleDropdownClose}
+              className="dropdown"
             >
-              <Nav.Link as={Link} to="/">
+              <Nav.Link as={Link} to="/" className="navbar-link-item">
                 Dashboard
               </Nav.Link>
-              <Nav.Link as={Link} to="/laundries">
+              <Nav.Link as={Link} to="/laundries" className="navbar-link-item">
                 Input Laundry
               </Nav.Link>
-              <Nav.Link as={Link} to="/karyawans">
+              <Nav.Link as={Link} to="/karyawans" className="navbar-link-item">
                 Input Karyawan
               </Nav.Link>
-              <Nav.Link as={Link} to="/riwayat-transaksi">
+              <Nav.Link as={Link} to="/riwayat-transaksi" className="navbar-link-item">
                 Riwayat Transaksi
               </Nav.Link>
-              <Nav.Link as={Link} to="/daftar-karyawan">
+              <Nav.Link as={Link} to="/daftar-karyawan" className="navbar-link-item">
                 Daftar Karyawan
               </Nav.Link>
-              {/* Tambahkan tautan lainnya jika diperlukan */}
             </NavDropdown>
           </Nav>
           <Nav>
-            {/* Tombol Log Out di ujung kanan */}
             <Nav.Link>
-              <Button variant="danger" onClick={handleLogout}>
+              <Button className="navbar-btn" onClick={handleLogout}>
+                <span className="button-icon">
+                  <img src={LogOutBtn} alt="Logout" height="25" />
+                </span>
                 Log Out
               </Button>
             </Nav.Link>

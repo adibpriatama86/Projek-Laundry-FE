@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Table, Button, Modal, ListGroup, Container, Row, Col } from "react-bootstrap";
 import "../css/LaundryOutput.css";
+import BrandingLogo from "../images/logo1.png";
 
 const formatToRupiah = (number) => {
   const formatter = new Intl.NumberFormat('id-ID', {
@@ -18,6 +19,7 @@ const LaundryOutput = ({ laundries }) => {
   const showDetailModal = (laundry) => {
     setSelectedLaundry(laundry);
     setDetailModalShow(true);
+    setIsPrinted(true);
   };
 
   const hideDetailModal = () => {
@@ -26,15 +28,15 @@ const LaundryOutput = ({ laundries }) => {
   };
 
   const handleCetak = () => {
+    setIsPrinted(true); // Memperbarui status sebelum mencetak
     window.print();
     hideDetailModal();
-    setIsPrinted(true);
   };
   
 
   return (
     <div className="table-responsive">
-      <Table className="table-container">
+      <Table className="laundry-output-table-container">
         <thead>
           <tr>
             <th>ID</th>
@@ -62,12 +64,14 @@ const LaundryOutput = ({ laundries }) => {
               <td>{laundry.berat} Kg</td>
               <td>{formatToRupiah(parseFloat(laundry.totalHarga))}</td>
               <td>
-                <Button
-                  variant="info"
-                  onClick={() => showDetailModal(laundry)}
-                >
-                  Detail
-                </Button>
+                <div className="laundry-output-btn-container">
+                  <Button
+                    onClick={() => showDetailModal(laundry)}
+                    className="laundry-output-btn-table"
+                  >
+                    Detail
+                  </Button>
+                </div>
               </td>
             </tr>
           ))}
@@ -82,6 +86,7 @@ const LaundryOutput = ({ laundries }) => {
       <Modal.Body>
         {selectedLaundry && (
           <Container id="printable-area">
+            <img src={BrandingLogo} alt="Branding Logo" height="80" className="mb-3" />
             <Row>
               <Col>
                 <ListGroup>
@@ -124,12 +129,12 @@ const LaundryOutput = ({ laundries }) => {
                   </ListGroup.Item>
                   
                 </ListGroup>
-                  {isPrinted && (
-                    <p>Dicetak pada {new Date().toLocaleString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' })}</p>
-                  )}
               </Col>
               
             </Row>
+            {isPrinted && (
+              <p>Dicetak pada {new Date().toLocaleString('id-ID', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' })}</p>
+            )}
           </Container>
         )}
       </Modal.Body>

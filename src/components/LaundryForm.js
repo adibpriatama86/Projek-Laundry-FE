@@ -224,46 +224,52 @@ class LaundryForm extends Component {
   render() {
     return (
       <div as={Link} to="laundries">
-        <h2>Daftar Laundry</h2>
         
 
-        <div className="form-container">
+        <div className="laundry-form-container">
+        <h2 className="laundry-form-title">Input Data Laundry</h2>
           <Form>
-            {/* Removed ID field */}
-            <Form.Group className="mb-3" controlId="formLaundryName">
-              <Form.Label>Nama:</Form.Label>
+            <Form.Group className="laundry-form-group" controlId="formLaundryName">
+              <Form.Label className="laundry-form-label">Nama:</Form.Label>
               <Form.Control
+                className="laundry-form-control"
                 type="text"
                 name="nama"
                 value={this.state.newLaundry.nama}
                 onChange={this.handleLaundryChange}
+                placeholder="Masukkan Nama Pelanggan"
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="">
-              <Form.Label>Tanggal Masuk</Form.Label>
-              <DatePicker
-                selected={new Date(this.state.newLaundry.tanggalMasuk)}
-                onChange={(date) => this.handleDateChange(date, 'tanggalMasuk')}
-                dateFormat="dd/MM/yyyy"
-                className="form-control"
-              />
+            <Form.Group className="laundry-form-group" controlId="">
+              <Form.Label className="laundry-form-label">Tanggal Masuk:</Form.Label>
+              <div className="datepicker">
+                <DatePicker
+                  selected={new Date(this.state.newLaundry.tanggalMasuk)}
+                  onChange={(date) => this.handleDateChange(date, 'tanggalMasuk')}
+                  dateFormat="dd/MM/yyyy"
+                  className="laundry-form-control-date"
+                />
+              </div>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="">
-              <Form.Label>Tanggal Keluar</Form.Label>
-              <DatePicker
-                selected={new Date(this.state.newLaundry.tanggalKeluar)}
-                onChange={(date) => this.handleDateChange(date, 'tanggalKeluar')}
-                dateFormat="dd/MM/yyyy"
-                className="form-control"
-              />
+            <Form.Group className="laundry-form-group" controlId="">
+              <Form.Label className="laundry-form-label">Tanggal Keluar:</Form.Label>
+              <div className="datepicker">
+                <DatePicker
+                  selected={new Date(this.state.newLaundry.tanggalKeluar)}
+                  onChange={(date) => this.handleDateChange(date, 'tanggalKeluar')}
+                  dateFormat="dd/MM/yyyy"
+                  className="laundry-form-control-date"
+                />
+              </div>
             </Form.Group>
 
 
-            <Form.Group className="mb-3" controlId="formLaundryType">
-              <Form.Label>Jenis Laundry:</Form.Label>
+            <Form.Group className="laundry-form-group" controlId="formLaundryType">
+              <Form.Label className="laundry-form-label">Jenis Laundry:</Form.Label>
               <Form.Control
+                className="laundry-form-control"
                 as="select"
                 name="jenisLaundry"
                 value={this.state.newLaundry.jenisLaundry}
@@ -276,9 +282,10 @@ class LaundryForm extends Component {
               </Form.Control>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formLaundryCategory">
-              <Form.Label>Tipe Laundry:</Form.Label>
+            <Form.Group className="laundry-form-group" controlId="formLaundryCategory">
+              <Form.Label className="laundry-form-label">Tipe Laundry:</Form.Label>
               <Form.Control
+                className="laundry-form-control"
                 as="select"
                 name="tipeLaundry"
                 value={this.state.newLaundry.tipeLaundry}
@@ -290,9 +297,10 @@ class LaundryForm extends Component {
               </Form.Control>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formLaundryPrice">
-              <Form.Label>Harga per KG:</Form.Label>
+            <Form.Group className="laundry-form-group" controlId="formLaundryPrice">
+              <Form.Label className="laundry-form-label">Harga per KG:</Form.Label>
               <Form.Control
+                className="laundry-form-control"
                 type="text"
                 name="hargaPerKG"
                 value={formatToRupiah(parseFloat(this.state.newLaundry.hargaPerKG))}
@@ -300,11 +308,13 @@ class LaundryForm extends Component {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formLaundryWeight">
-              <Form.Label>Berat:</Form.Label>
+            <Form.Group className="laundry-form-group" controlId="formLaundryWeight">
+              <Form.Label className="laundry-form-label">Berat:</Form.Label>
               <Form.Control
+                className="laundry-form-control"
                 type="text"
                 name="berat"
+                placeholder="Masukkan Berat Laundry"
                 value={this.state.newLaundry.berat}
                 onChange={(e) => {
                   const onlyNums = e.target.value.replace(/[^0-9.]/g, '');
@@ -322,9 +332,10 @@ class LaundryForm extends Component {
             </Form.Group>
 
 
-            <Form.Group className="mb-3" controlId="formLaundryTotalPrice">
-              <Form.Label>Total Harga:</Form.Label>
+            <Form.Group className="laundry-form-group" controlId="formLaundryTotalPrice">
+              <Form.Label className="laundry-form-label">Total Harga:</Form.Label>
               <Form.Control
+                className="laundry-form-control"
                 type="text"
                 name="totalHarga"
                 value={formatToRupiah(parseFloat(this.state.newLaundry.totalHarga))}
@@ -333,16 +344,18 @@ class LaundryForm extends Component {
               />
             </Form.Group>
 
-            <Button variant="primary" onClick={this.addLaundry}>
-              {this.state.editingId !== null
-                ? "Simpan Perubahan"
-                : "Tambah Laundry"}
-            </Button>
+            <div className="laundry-form-btn-container">
+              <Button onClick={this.addLaundry} className="laundry-form-btn">
+                {this.state.editingId !== null
+                  ? "Simpan Perubahan"
+                  : "Tambah Laundry"}
+              </Button>
+            </div>
           </Form>{" "}
         </div>
 
         <div className="table-responsive">
-          <Table className="table-container">
+          <Table className="laundry-form-table-container">
             <thead>
               <tr>
                 <th>ID</th>
@@ -370,18 +383,20 @@ class LaundryForm extends Component {
                   <td>{laundry.berat} Kg</td>
                   <td>{formatToRupiah(parseFloat(laundry.totalHarga))}</td>
                   <td>
-                    <Button
-                      variant="info"
-                      onClick={() => this.editLaundry(laundry.id)}
-                    >
-                      Edit
-                    </Button>{" "}
-                    <Button
-                      variant="danger"
-                      onClick={() => this.deleteLaundry(laundry.id)}
-                    >
-                      Delete
-                    </Button>
+                    <div className="laundry-btn-container">
+                      <Button
+                        onClick={() => this.editLaundry(laundry.id)}
+                        className="laundry-form-btn-table1"
+                      >
+                        Edit
+                      </Button>{" "}
+                      <Button
+                        onClick={() => this.deleteLaundry(laundry.id)}
+                        className="laundry-form-btn-table2"
+                      >
+                        Hapus
+                      </Button>
+                    </div>
                   </td>
                 </tr>
               ))}

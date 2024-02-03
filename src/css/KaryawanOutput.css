@@ -1,0 +1,72 @@
+.table-responsive {
+    margin: 0 50px;
+  }
+
+  .karyawan-output-table-container {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 93px;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    overflow: hidden;
+  }
+  
+  .karyawan-output-table-container th, .karyawan-output-table-container td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .karyawan-output-table-container thead th {
+    background-color: #1D597D;
+    color: white;
+    text-align: center;
+  }
+
+  .karyawan-output-table-container tbody td {
+    background-color: #9ec5d390;
+  }
+  
+  .karyawan-output-table-container tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .karyawan-output-table-container tbody tr:hover {
+    background-color: #97caf7;
+    transition: .1s ease-in-out;
+  }
+  
+  .karyawan-output-table-container button {
+    margin-right: 5px;
+  }
+  
+  .karyawan-output-table-container button:hover {
+    cursor: pointer;
+  }
+
+  .karyawan-output-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .karyawan-output-table-btn1 {
+    background-color: #f9a545;
+    border: none;
+    border-radius: 15px;
+  }
+
+  .karyawan-output-table-btn1:hover {
+    background-color: #bd792a;
+  }
+
+  .karyawan-output-table-btn2 {
+    background-color: #11d642;
+    border: none;
+    border-radius: 15px;
+  }
+
+  .karyawan-output-table-btn2:hover {
+    background-color: #0da633;
+  }

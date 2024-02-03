@@ -11,3 +11,98 @@
       top: 0;
     }
   }
+
+  .table-responsive {
+    margin: 0 50px;
+  }
+
+  .laundry-output-table-container {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 93px;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    overflow: hidden;
+  }
+  
+  .laundry-output-table-container th, .laundry-output-table-container td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .laundry-output-table-container thead th {
+    background-color: #1D597D;
+    color: white;
+    text-align: center;
+  }
+
+  .laundry-output-table-container tbody td {
+    background-color: #9ec5d390;
+  }
+  
+  .laundry-output-table-container tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .laundry-output-table-container tbody tr:hover {
+    background-color: #97caf7;
+    transition: .1s ease-in-out;
+  }
+  
+  .laundry-output-table-container button {
+    margin-right: 5px;
+  }
+  
+  .laundry-output-table-container button:hover {
+    cursor: pointer;
+  }
+
+  .laundry-output-btn-table {
+    background-color: #0b81cb;
+    border: none;
+    border-radius: 15px;
+  }
+
+  .laundry-output-btn-table:hover {
+    background-color: #0968a3;
+  }
+
+  /* CSS Styling untuk Modal */
+.modal-content {
+  border-radius: 20px;
+}
+
+.modal-header {
+  background-color: #1D597D;
+  color: white;
+  border-bottom: 0;
+  border-radius: 20px 20px 0 0;
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  border-top: 0;
+  border-radius: 0 0 20px 20px;
+}
+
+/* Tombol Cetak di Modal Footer */
+.modal-footer .btn-primary {
+  background-color: #1D597D;
+  border-color: #1D597D;
+  font-weight: bold;
+}
+
+.modal-footer .btn-primary:hover {
+  background-color: #124362;
+  border-color: #124362;
+}

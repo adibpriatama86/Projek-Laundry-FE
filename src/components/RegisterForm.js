@@ -5,6 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import "../css/RegisterForm.css";
+import Logo from "../images/laundrygo-high-resolution-logo (1)-modified.png"
 
 const Api_Url = process.env.REACT_APP_API_URL;
 
@@ -120,42 +122,51 @@ const RegisterForm = ({ onRegistrationSuccess }) => {
 
 
   return (
-    <div>
-      <h2>Registrasi Karyawan</h2>
+    <div className="container-register">
 
-      <div className="form-container">
-        <Form>
-          <Form.Group controlId="formNama">
-            <Form.Label>Nama Lengkap:</Form.Label>
+      <div className="form-container-register">
+        <div className="logo-container-register">
+          <img src={Logo} className="logo-register" alt="Logo" />
+        </div>
+          <h2 className="title-register">Registrasi Karyawan</h2>
+        <Form >
+          <Form.Group controlId="formNama" className="form-group-register">
+            <Form.Label className="form-label-register">Nama Lengkap:</Form.Label>
             <Form.Control
               type="text"
               name="nama"
               value={newKaryawan.nama}
               onChange={handleKaryawanChange}
               required
+              className="form-control-register"
+              placeholder="Masukkan Nama Lengkap Anda"
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="">
-            <Form.Label>Tanggal Lahir</Form.Label>
+          <Form.Group className="form-group-register" controlId="" >
+            <Form.Label className="form-label-register">Tanggal Lahir:</Form.Label>
+            <div className="datepicker">
             <DatePicker
               selected={newKaryawan.tanggalLahir}
               onChange={(date) => handleDateChange(date)}
               dateFormat="dd/MM/yyyy"
-              className="form-control"
+              className="form-control-register-date"
             />
+            </div>
+            
             {newKaryawan.tanggalLahir === null && (
               <div className="text-danger">Tanggal Lahir harus diisi.</div>
             )}
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formKaryawanKelamin">
-            <Form.Label>Jenis Kelamin:</Form.Label>
+          <Form.Group className="form-group-register" controlId="formKaryawanKelamin">
+            <Form.Label className="form-label-register">Jenis Kelamin:</Form.Label>
             <Form.Control
               as="select"
               name="jenisKelamin"
               value={newKaryawan.jenisKelamin}
               onChange={handleKaryawanChange}
+              className="form-control-register"
             >
               <option value="" disabled>Silahkan Pilih Jenis Kelamin Anda</option>
               <option value="Pria">Pria</option>
@@ -163,31 +174,35 @@ const RegisterForm = ({ onRegistrationSuccess }) => {
             </Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="formAddress">
-            <Form.Label>Alamat:</Form.Label>
+          <Form.Group controlId="formAddress" className="form-group-register">
+            <Form.Label className="form-label-register">Alamat:</Form.Label>
             <Form.Control
               type="text"
               name="alamat"
               value={newKaryawan.alamat}
               onChange={handleKaryawanChange}
               required
+              className="form-control-register"
+              placeholder="Masukkan Alamat Domisili Anda"
             />
           </Form.Group>
 
-          <Form.Group controlId="formEmail">
-            <Form.Label>Email:</Form.Label>
+          <Form.Group controlId="formEmail" className="form-group-register">
+            <Form.Label className="form-label-register">Email:</Form.Label>
             <Form.Control
               type="email"
               name="email"
               value={newKaryawan.email}
               onChange={handleKaryawanChange}
               required
-              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" // Pola validasi email
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+              className="form-control-register"
+              placeholder="Masukkan Alamat Email Anda"
             />
           </Form.Group>
 
-          <Form.Group controlId="formPassword">
-            <Form.Label>Password:</Form.Label>
+          <Form.Group controlId="formPassword" className="form-group-register">
+            <Form.Label className="form-label-register">Password:</Form.Label>
             <InputGroup>
               <Form.Control
                 type={showPassword ? "text" : "password"}
@@ -195,18 +210,21 @@ const RegisterForm = ({ onRegistrationSuccess }) => {
                 value={newKaryawan.password}
                 onChange={handleKaryawanChange}
                 required
+                className="form-control-register"
+                placeholder="Buat Password Anda"
               />
               <InputGroup.Text>
                 <FontAwesomeIcon
                   icon={showPassword ? faEyeSlash : faEye}
                   onClick={toggleShowPassword}
+                className="form-control-eye"
                 />
               </InputGroup.Text>
             </InputGroup>
           </Form.Group>
 
-          <Form.Group controlId="formConfirmPassword">
-            <Form.Label>Konfirmasi Password:</Form.Label>
+          <Form.Group controlId="formConfirmPassword" className="form-group-register">
+            <Form.Label className="form-label-register">Konfirmasi Password:</Form.Label>
             <InputGroup>
               <Form.Control
                 type={showPassword ? "text" : "password"}
@@ -214,19 +232,24 @@ const RegisterForm = ({ onRegistrationSuccess }) => {
                 value={newKaryawan.confirmPassword}
                 onChange={handleKaryawanChange}
                 required
+                className="form-control-register"
+                placeholder="Konfirmasi Password Anda"
               />
               <InputGroup.Text>
                 <FontAwesomeIcon
                   icon={showPassword ? faEyeSlash : faEye}
                   onClick={toggleShowPassword}
+                className="form-control-eye"
                 />
               </InputGroup.Text>
             </InputGroup>
           </Form.Group>
-
-          <Button variant="primary" type="button" onClick={addKaryawan}>
-            Tambah Karyawan
-          </Button>
+          
+          <div className="btn-register-container">
+            <Button type="button" onClick={addKaryawan} className="btn-register">
+              Registrasi
+            </Button>
+          </div>
         </Form>
         <div>
         Sudah punya akun?{" "}

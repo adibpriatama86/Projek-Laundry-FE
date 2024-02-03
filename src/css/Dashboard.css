@@ -1,8 +1,119 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+
+.dashboard-container {
+  margin: 0 20px;
+}
+
 .dashboard-title {
-    text-align: left;
-  }
+  text-align: left;
+  font-weight: bold;
+  font-size: 35px;
+  text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.welcome-message {
+  text-align: left;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.dashboard-card-text-funct {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   
-  .welcome-message {
-    text-align: left;
+}
+
+.dashboard-card-container {
+  margin-bottom: 50px;
+}
+
+.dashboard-card {
+  margin-top: 20px;
+  background-color: #9ec5d3ab;
+  border: none;
+  border-radius: 130px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 28px;
+  height: 130px;
+  box-shadow: 10px 15px 25px rgba(0, 0, 0, 0.338);
+}
+
+.dashboard-card-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-card-icon {
+  width: 75px;
+  margin-right: 20px;
+}
+
+.dashboard-card-text {
+  text-align: center;
+}
+
+.dashboard-btn-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 15px;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #9ec5d390;
+  padding: 35px 20px 20px 20px;
+  border-radius: 35px;
+  margin-top: 50px;
+  max-width: 600px;
+  margin-bottom: 40px;
+  box-shadow: 10px 15px 25px rgba(0, 0, 0, 0.338);
+
+}
+
+.dashboard-btn {
+  border: none;
+  background-color: #1d587dd6;
+  height: 50px;
+  width: 100%;
+  border-radius: 28px;
+  margin-bottom: 15px; 
+}
+
+.dashboard-btn:hover {
+  background-color: #124362;
+  box-shadow: 10px 15px 25px rgba(0, 0, 0, 0.338);
+}
+
+@media (max-width: 768px) {
+  .dashboard-btn-container {
+    max-width: 350px;
   }
-  
+}
+
+@media (min-width: 768px) {
+  .dashboard-btn-container {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (min-width: 740px ) and (max-width: 940px) {
+  .dashboard-btn-container {
+  grid-template-columns: repeat(1, 1fr);
+
+  }
+  .dashboard-card-icon {
+    width: 50px;
+  }
+  .dashboard-card-text-funct {
+    font-size: 20px;
+  }
+  .dashboard-card-text {
+    font-size: 16px;
+  }
+}
+

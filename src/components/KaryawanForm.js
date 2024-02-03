@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import "../css/KaryawanForm.css";
 
 const Api_Url = process.env.REACT_APP_API_URL;
 
@@ -213,42 +214,48 @@ class KaryawanForm extends Component {
   render() {
     return (
       <div>
-        <h2>Daftar Karyawan</h2>
 
-        <div className="form-container">
+        <div className="karyawan-form-container">
+        <h2 className="karyawan-form-title">Daftar Karyawan</h2>
           <Form>
-            <Form.Group controlId="formNama">
-              <Form.Label>Nama Lengkap:</Form.Label>
+            <Form.Group controlId="formNama" className="karyawan-form-group">
+              <Form.Label className="karyawan-form-label">Nama Lengkap:</Form.Label>
               <Form.Control
                 type="text"
                 name="nama"
                 value={this.state.newKaryawan.nama}
                 onChange={this.handleKaryawanChange}
                 required
+                className="karyawan-form-control"
+                placeholder="Masukkan Nama Lengkap Anda"
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="">
-              <Form.Label>Tanggal Lahir</Form.Label>
-              <DatePicker
-                selected={this.state.newKaryawan.tanggalLahir}
-                onChange={(date) => this.handleDateChange(date, 'tanggalLahir')}
-                dateFormat="dd/MM/yyyy"
-                className="form-control"
-              />
+            <Form.Group className="karyawan-form-group" controlId="" >
+              <Form.Label className="karyawan-form-label">Tanggal Lahir</Form.Label>
+              <div className="datepicker">
+                <DatePicker
+                  selected={this.state.newKaryawan.tanggalLahir}
+                  onChange={(date) => this.handleDateChange(date, 'tanggalLahir')}
+                  dateFormat="dd/MM/yyyy"
+                  className="karyawan-form-control-date"
+
+                />
+              </div>
               {this.state.newKaryawan.tanggalLahir === null && (
                 <div className="text-danger">Tanggal Lahir harus diisi.</div>
               )}
             </Form.Group>
 
 
-            <Form.Group className="mb-3" controlId="formKaryawanKelamin">
-              <Form.Label>Jenis Kelamin:</Form.Label>
+            <Form.Group className="karyawan-form-group" controlId="formKaryawanKelamin">
+              <Form.Label className="karyawan-form-label">Jenis Kelamin:</Form.Label>
               <Form.Control
                 as="select"
                 name="jenisKelamin"
                 value={this.state.newKaryawan.jenisKelamin}
                 onChange={this.handleKaryawanChange}
+                className="karyawan-form-control"
               >
                 <option value="" disabled>Silahkan Pilih Jenis Kelamin Anda</option>
                 <option value="Pria">Pria</option>
@@ -256,31 +263,35 @@ class KaryawanForm extends Component {
               </Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="formAddress">
-              <Form.Label>Alamat:</Form.Label>
+            <Form.Group controlId="formAddress" className="karyawan-form-group">
+              <Form.Label className="karyawan-form-label">Alamat:</Form.Label>
               <Form.Control
                 type="text"
                 name="alamat"
                 value={this.state.newKaryawan.alamat}
                 onChange={this.handleKaryawanChange}
                 required
+                className="karyawan-form-control"
+                placeholder="Masukkan Alamat Domisili Anda"
               />
             </Form.Group>
 
-            <Form.Group controlId="formEmail">
-              <Form.Label>Email:</Form.Label>
+            <Form.Group controlId="formEmail" className="karyawan-form-group">
+              <Form.Label className="karyawan-form-label">Email:</Form.Label>
               <Form.Control
                 type="email"
                 name="email"
                 value={this.state.newKaryawan.email}
                 onChange={this.handleKaryawanChange}
                 required
-                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" // Pola validasi email
+                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                className="karyawan-form-control"
+                placeholder="Masukkan Alamat Email Anda"
               />
             </Form.Group>
 
-            <Form.Group controlId="formPassword">
-              <Form.Label>Password:</Form.Label>
+            <Form.Group controlId="formPassword" className="karyawan-form-group">
+              <Form.Label className="karyawan-form-label">Password:</Form.Label>
               <InputGroup>
                 <Form.Control
                   type={this.state.showPassword ? "text" : "password"}
@@ -288,18 +299,21 @@ class KaryawanForm extends Component {
                   value={this.state.newKaryawan.password}
                   onChange={this.handleKaryawanChange}
                   required
+                  className="karyawan-form-control"
+                  placeholder="Buat Password Anda"
                 />
                 <InputGroup.Text>
                   <FontAwesomeIcon
                     icon={this.state.showPassword ? faEyeSlash : faEye}
                     onClick={this.toggleShowPassword}
+                    className="form-control-eye"
                   />
                 </InputGroup.Text>
               </InputGroup>
             </Form.Group>
 
-            <Form.Group controlId="formConfirmPassword">
-              <Form.Label>Konfirmasi Password:</Form.Label>
+            <Form.Group controlId="formConfirmPassword" className="karyawan-form-group">
+              <Form.Label className="karyawan-form-label">Konfirmasi Password:</Form.Label>
               <InputGroup>
                 <Form.Control
                   type={this.state.showPassword ? "text" : "password"}
@@ -307,27 +321,31 @@ class KaryawanForm extends Component {
                   value={this.state.newKaryawan.confirmPassword}
                   onChange={this.handleKaryawanChange}
                   required
+                  className="karyawan-form-control"
+                  placeholder="Konfirmasi Password Anda"
                 />
                 <InputGroup.Text>
                   <FontAwesomeIcon
                     icon={this.state.showPassword ? faEyeSlash : faEye}
                     onClick={this.toggleShowPassword}
+                className="form-control-eye"
                   />
                 </InputGroup.Text>
               </InputGroup>
             </Form.Group>
 
-
-            <Button variant="primary" type="button" onClick={this.addKaryawan}>
-              {this.state.editingId !== null
-                ? "Simpan Perubahan"
-                : "Tambah Karyawan"}
-            </Button>
+            <div className="karyawan-form-btn-container">
+              <Button className="karyawan-form-btn" type="button" onClick={this.addKaryawan}>
+                {this.state.editingId !== null
+                  ? "Simpan Perubahan"
+                  : "Tambah Karyawan"}
+              </Button>
+            </div>
           </Form>
         </div>
 
-        <div className="table-container">
-          <Table striped bordered hover>
+        <div className="table-responsive">
+          <Table className="karyawan-form-table-container">
             <thead>
               <tr>
                 <th>ID</th>
@@ -349,18 +367,20 @@ class KaryawanForm extends Component {
                   <td>{karyawan.email}</td>
                   <td>{karyawan.alamat}</td>
                   <td>
-                    <Button
-                      variant="warning"
-                      onClick={() => this.editKaryawan(karyawan.id)}
-                    >
-                      Edit
-                    </Button>{" "}
-                    <Button
-                      variant="danger"
-                      onClick={() => this.deleteKaryawan(karyawan.id)}
-                    >
-                      Hapus
-                    </Button>
+                    <div className="karyawan-btn-container">
+                      <Button
+                        onClick={() => this.editKaryawan(karyawan.id)}
+                        className="karyawan-table-btn1"
+                      >
+                        Edit
+                      </Button>{" "}
+                      <Button
+                        onClick={() => this.deleteKaryawan(karyawan.id)}
+                        className="karyawan-table-btn2"
+                      >
+                        Hapus
+                      </Button>
+                    </div>
                   </td>
                 </tr>
               ))}

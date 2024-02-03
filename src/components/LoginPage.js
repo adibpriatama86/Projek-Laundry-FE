@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Form, Button, Container } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import Logo from "../images/laundrygo-high-resolution-logo (1)-modified.png";
+import "../css/LoginPage.css";
 
 const LoginPage = ({ onLoginSuccess }) => {
   const [loginEmail, setLoginEmail] = useState("");
@@ -28,36 +30,43 @@ const LoginPage = ({ onLoginSuccess }) => {
   };
 
   return (
-    <Container>
-      <h2>Login Page</h2>
+    <div className="form-login-container">
+      <div className="logo-login-container">
+        <img src={Logo} className="logo-login" alt="logo" />
+      </div>
+      <h2 className="title-login">Login</h2>
       <Form>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+        <Form.Group controlId="formBasicEmail" className="form-group-login">
+          <Form.Label className="form-label-login">Email:</Form.Label>
           <Form.Control
             type="email"
-            placeholder="Enter email"
+            placeholder="Masukkan Alamat Email Anda"
             value={loginEmail}
             onChange={(e) => setLoginEmail(e.target.value)}
+            className="form-control-login"
           />
         </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+        <Form.Group controlId="formBasicPassword" className="form-group-login">
+          <Form.Label className="form-label-login">Password:</Form.Label>
           <Form.Control
             type="password"
-            placeholder="Password"
+            placeholder="Masukkan Password Anda"
             value={loginPassword}
             onChange={(e) => setLoginPassword(e.target.value)}
+            className="form-control-login"
           />
         </Form.Group>
 
         {error && <p style={{ color: "red" }}>{error}</p>}
 
-        <Button variant="primary" onClick={handleLogin}>
-          Login
-        </Button>
+        <div className="btn-login-container">
+          <Button className="btn-login" onClick={handleLogin}>
+            Login
+          </Button>
+        </div>
       </Form>
-    </Container>
+    </div>
   );
 };
 

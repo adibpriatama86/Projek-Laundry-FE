@@ -1,0 +1,47 @@
+/* CSS Styling untuk Navbar */
+.navbar-container {
+  background-color: #fff;
+  padding: 10px 0;
+}
+
+.me-auto {
+  border-radius: 20px;
+  padding: 0 4px;
+}
+
+.me-auto:hover {
+  background-color: #1d587d7e;
+  transition: .3s ease-in-out;
+}
+
+.navbar-brand img {
+  max-height: 30px;
+}
+
+.navbar-toggler-icon {
+  background-color: #fff; 
+}
+
+.navbar-nav .nav-link {
+  color: #000 !important;
+}
+
+.navbar-link-item:hover {
+  background-color: #1d587d7e; 
+}
+
+.navbar-nav .nav-item:hover .nav-link:after {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.navbar-btn {
+  background-color: #c9302c !important;
+  border: none !important;
+  border-radius: 20px !important;
+  padding: 10px !important;
+}
+
+.navbar-btn:hover {
+  background-color: #a71914 !important;
+}

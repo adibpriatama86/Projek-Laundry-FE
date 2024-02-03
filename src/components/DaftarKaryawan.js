@@ -3,6 +3,7 @@ import KaryawanOutput from "./KaryawanOutput";
 import { Link } from "react-router-dom";
 import * as XLSX from "xlsx";
 import { Button } from "react-bootstrap";
+import "../css/DaftarKaryawan.css";
 
 const Api_Url = process.env.REACT_APP_API_URL;
 
@@ -152,8 +153,10 @@ class DaftarKaryawan extends Component {
         render() {
             return (
                 <div as={Link} to="daftar-karyawan">
-                    <h2>Daftar Karyawan</h2>
-                    <Button onClick={this.exportToExcel}>Export to Excel</Button>
+                  <div className="daftar-karyawan-container">
+                    <h2 className="daftar-karyawan-title">Daftar Karyawan</h2>
+                    <Button className="daftar-karyawan-excel" onClick={this.exportToExcel}>Export to Excel</Button>
+                  </div>
                     <KaryawanOutput
                         karyawans={this.state.karyawans}
                         editKaryawan={this.editKaryawan}

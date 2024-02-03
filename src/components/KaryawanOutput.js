@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Table, Button, Modal, Form } from "react-bootstrap";
 import QRCode from "qrcode.react";
+import "../css/KaryawanOutput.css";
 
 const KaryawanOutput = ({ karyawans }) => {
   const [showPasswordModal, setShowPasswordModal] = useState(false);
@@ -57,7 +58,7 @@ const KaryawanOutput = ({ karyawans }) => {
 
   return (
     <div className="table-responsive">
-      <Table striped bordered hover>
+      <Table className="karyawan-output-table-container">
         <thead>
           <tr>
             <th>ID</th>
@@ -77,18 +78,20 @@ const KaryawanOutput = ({ karyawans }) => {
               <td>{karyawan.email}</td>
               <td>{karyawan.alamat}</td>
               <td>
-                <Button
-                  variant="info"
-                  onClick={() => handleShowPasswordModal(karyawan)}
-                >
-                  Lihat Password
-                </Button>
-                <Button
-                  variant="primary"
-                  onClick={() => handleShowQRCodeModal(karyawan)}
-                >
-                  QR Code
-                </Button>
+                <div className="karyawan-output-btn-container">
+                  <Button
+                    onClick={() => handleShowPasswordModal(karyawan)}
+                    className="karyawan-output-table-btn1"
+                  >
+                    Lihat Password
+                  </Button>
+                  <Button
+                    onClick={() => handleShowQRCodeModal(karyawan)}
+                    className="karyawan-output-table-btn2"
+                  >
+                    QR Code
+                  </Button>
+                </div>
               </td>
             </tr>
           ))}

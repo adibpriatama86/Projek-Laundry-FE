@@ -1,0 +1,45 @@
+.riwayat-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 60px 0 60px;
+}
+
+.riwayat-title {
+  font-weight: bold;
+  font-size: 40px;
+  text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.676);
+}
+
+.riwayat-excel {
+  background-color: #1D597D;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  padding: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.338);
+}
+
+.riwayat-excel:hover {
+  background-color: #124362;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.338);
+}
+
+@media (max-width: 768px) {
+  .riwayat-container {
+    flex-direction: column; /* Mengubah arah kontainer menjadi kolom */
+    align-items: flex-start; /* Mengatur posisi elemen ke kiri */
+  }
+
+  .riwayat-excel {
+    margin-top: 10px; /* Menambah jarak atas antara .riwayat-title dan .riwayat-excel */
+    width: 100%; /* Membuat .riwayat-excel mengisi lebar kontainer */
+  }
+
+  .riwayat-title {
+    /* font-size: 35px; */
+    margin-bottom: 10px; /* Menambah jarak bawah pada .riwayat-title */
+  }
+}

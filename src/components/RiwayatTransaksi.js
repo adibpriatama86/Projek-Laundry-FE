@@ -3,6 +3,7 @@ import LaundryOutput from "./LaundryOutput";
 import { Link } from "react-router-dom";
 import * as XLSX from "xlsx";
 import { Button } from "react-bootstrap";
+import "../css/RiwayatTransaksi.css";
 
 const Api_Url = process.env.REACT_APP_API_URL;
 
@@ -201,8 +202,10 @@ class RiwayatTransaksi extends Component {
   render() {
     return (
       <div as={Link} to="riwayat-transaksi">
-        <h2>Riwayat Transaksi</h2>
-        <Button onClick={this.exportToExcel}>Export to Excel</Button>
+        <div className="riwayat-container">
+          <h2 className="riwayat-title">Riwayat Transaksi</h2>
+          <Button onClick={this.exportToExcel} className="riwayat-excel">Export to Excel</Button>
+        </div>
         <LaundryOutput
           laundries={this.state.laundries}
           editLaundry={this.editLaundry}
